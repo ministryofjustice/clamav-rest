@@ -3,9 +3,9 @@ run:
 	docker run --name clamav-rest -d -p 8080:8080 --link clamav:clamav-server lokori/clamav-rest clamav-server
 
 clean:
-	docker stop clamav-rest || true
+	docker kill clamav-rest || true
 	docker rm clamav-rest || true
-	docker stop clamav || true
+	docker kill clamav || true
 	docker rm clamav
 
 ping:
