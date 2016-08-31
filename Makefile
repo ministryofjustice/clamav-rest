@@ -1,6 +1,6 @@
 run:
-	docker run -p 8080:8080 --link clamav:clamav-server -t lokori/clamav-rest clamav-server
 	docker run --name clamav -d -p 3310:3310 quay.io/ukhomeofficedigital/clamav:v1.2.1-rc1
+	docker run --name clamav-rest -d -p 8080:8080 --link clamav:clamav-server lokori/clamav-rest clamav-server
 
 clean:
 	docker stop clamav-rest || true
