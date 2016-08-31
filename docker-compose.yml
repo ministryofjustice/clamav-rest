@@ -1,14 +1,15 @@
 version: '2'
 services:
   clamav:
-    image: quay.io/ukhomeofficedigital/clamav:v1.2.1-rc1
+    image: quay.io/ukhomeofficedigital/clamav:v1.1.0
   clamav-rest:
-    image: lokori/clamav-rest
+    image: quay.io/ukhomeofficedigital/clamav-rest:v1.1.0
     links:
       - clamav:clamav-server
+    environment:
+      HOST: clamav-server
+      PORT: 3310
     depends_on:
       - clamav
     ports:
       - 8080:8080
-    command:
-      - clamav-server
